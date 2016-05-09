@@ -1,0 +1,32 @@
+{
+    "name": "gubler/elixir-bundle",
+    "description": "This bundles integrates Laravel Elixir into Symfony",
+    "keywords": ["symfony3"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daryl Gubler",
+            "homepage": "https://dev88.co/"
+        }
+    ],
+    "require": {
+        "php": "^5.3.9|^7.0",
+        "symfony/framework-bundle": "~2.7|~3.0"
+    },
+    "require-dev": {
+        "symfony/symfony": "~2.7|~3.0",
+        "phpunit/phpunit": "4.8.*|~5.2",
+        "twig/twig": "~1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gubler\\ElixirBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
