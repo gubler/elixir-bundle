@@ -1,19 +1,36 @@
 <?php
-
+/**
+ * Add elixir twig function
+ */
 namespace Gubler\ElixirBundle\Twig;
 
+/**
+ * Class ElixirExtension
+ *
+ * @package Gubler\ElixirBundle\Twig
+ */
 class ElixirExtension extends \Twig_Extension
 {
-
+    /** @var string */
     protected $webDirectory;
+    /** @var string */
     protected $buildDirectory;
 
-    public function __construct($webDirectory, $buildDirectory = "build")
+    /**
+     * ElixirExtension constructor.
+     *
+     * @param string $webDirectory
+     * @param string $buildDirectory
+     */
+    public function __construct($webDirectory, $buildDirectory)
     {
         $this->webDirectory = $webDirectory;
         $this->buildDirectory = $buildDirectory;
     }
 
+    /**
+     * @{inheritdoc}
+     */
     public function getFunctions()
     {
         return array(
@@ -22,11 +39,11 @@ class ElixirExtension extends \Twig_Extension
     }
 
 
-/**
+    /**
      * Get the path to a versioned Elixir file.
      *
-     * @param  string  $file
-     * @param  string  $buildDirectory
+     * @param  string      $file
+     * @param  string|null $buildDirectory
      * @return string
      *
      * @throws \InvalidArgumentException
@@ -53,9 +70,12 @@ class ElixirExtension extends \Twig_Extension
             return '/'.$this->buildDirectory.'/'.$manifest[$file];
         }
 
-        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
+        throw new \InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 
+    /**
+     * @{inheritdoc}
+     */
     public function getName()
     {
         return 'elixir';
