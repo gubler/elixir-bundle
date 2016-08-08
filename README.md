@@ -74,4 +74,3 @@ you can use `elixir()` like this:
 ## TODO
 
 - Add console command to generate base `package.json` file.
-- Add tests
