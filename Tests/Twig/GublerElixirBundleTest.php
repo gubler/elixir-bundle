@@ -2,10 +2,30 @@
 
 namespace Gubler\ElixirBundle\Test\Twig;
 
-class GublerElixirBundleTest extends \PHPUnit_Framework_TestCase
+use Gubler\ElixirBundle\Twig\ElixirExtension;
+
+class ElixirExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIncomplete()
+    const WEB_DIRECTORY = __DIR__;
+    const BUILD_DIRECTORY = 'Stub';
+
+    public function testElixirReturnsCorrectFilenameWithHash()
     {
-        $this->markTestIncomplete('tests have not been generated for this bundle');
+        $elixirExtension = new ElixirExtension(self::WEB_DIRECTORY, self::BUILD_DIRECTORY);
+
+        $this->assertSame(
+            '/' . self::BUILD_DIRECTORY . '/css/an_asset.somecreazyhash.css',
+            $elixirExtension->elixir('css/an_asset.css')
+        );
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testElixirThrowsExceptionWhenFileNotFound()
+    {
+        $elixirExtension = new ElixirExtension(self::WEB_DIRECTORY, self::BUILD_DIRECTORY);
+
+        $elixirExtension->elixir('css/a_non_existing_asset.css');
     }
 }
