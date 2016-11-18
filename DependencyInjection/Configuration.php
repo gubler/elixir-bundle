@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode->children()
             ->scalarNode('web_directory')->defaultValue('%kernel.root_dir%/../web')->end()
             ->scalarNode('build_directory')->defaultValue('build')->end()
+            ->scalarNode('url_subdirectory')->defaultValue('')->end()
             ->end();
         return $treeBuilder;
     }

@@ -24,6 +24,7 @@ class GublerElixirExtension extends Extension
 
         $container->setParameter('gubler_elixir.web_directory', $config['web_directory']);
         $container->setParameter('gubler_elixir.build_directory', $config['build_directory']);
+        $container->setParameter('gubler_elixir.url_subdirectory', $config['url_subdirectory']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

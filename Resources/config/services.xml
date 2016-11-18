@@ -5,6 +5,7 @@
       <tag name="twig.extension"/>
       <argument>%gubler_elixir.web_directory%</argument>
       <argument>%gubler_elixir.build_directory%</argument>
+      <argument>%gubler_elixir.url_subdirectory%</argument>
     </service>
   </services>
 </container>

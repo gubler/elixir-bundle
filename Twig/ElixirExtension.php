@@ -15,17 +15,21 @@ class ElixirExtension extends \Twig_Extension
     protected $webDirectory;
     /** @var string */
     protected $buildDirectory;
+    /** @var string */
+    protected $urlSubdirectory;
 
     /**
      * ElixirExtension constructor.
      *
      * @param string $webDirectory
      * @param string $buildDirectory
+     * @param string $urlSubdirectory
      */
-    public function __construct($webDirectory, $buildDirectory)
+    public function __construct($webDirectory, $buildDirectory, $urlSubdirectory = '')
     {
         $this->webDirectory = $webDirectory;
         $this->buildDirectory = $buildDirectory;
+        $this->urlSubdirectory = preg_replace("/^\\/*(.*?)\\/*$/", "$1", $urlSubdirectory);
     }
 
     /**
@@ -66,8 +70,10 @@ class ElixirExtension extends \Twig_Extension
             $manifestPath = $this->buildDirectory;
         }
 
+        $subdir = (empty($this->urlSubdirectory)) ? '' : $this->urlSubdirectory.'/';
+
         if (isset($manifest[$file])) {
-            return '/'.$this->buildDirectory.'/'.$manifest[$file];
+            return '/'.$subdir.$this->buildDirectory.'/'.$manifest[$file];
         }
 
         throw new \InvalidArgumentException("File {$file} not defined in asset manifest.");
