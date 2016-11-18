@@ -7,7 +7,30 @@ from [Laravel/Framework](https://github.com/laravel/framework)).
 
 ## Installation
 
-### Step 1: Download the Bundle
+### Step 1: Install Elixir
+
+Follow [Laravel Elixir's installation instructions](https://laravel.com/docs/elixir) to install Elixir.
+
+You will need to add a `package.json` file for your application. Here is an example `package.json` with the requirements
+for Elixir:
+
+```json
+{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-14",
+    "laravel-elixir-vue-2": "^0.2.0",
+    "laravel-elixir-webpack-official": "^1.0.2",
+  }
+}
+```
+
+### Step 2: Download the Bundle
 
 Open a command console, enter your project directory and execute the following command to download the latest stable
 version of this bundle:
@@ -19,7 +42,7 @@ $ composer require gubler/elixir-bundle
 This command requires you to have Composer installed globally, as explained
 in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
-### Step 2: Enable the Bundle
+### Step 3: Enable the Bundle
 
 Then, enable the bundle by adding it to the list of registered bundles
 in the `app/AppKernel.php` file of your project:
@@ -46,11 +69,11 @@ class AppKernel extends Kernel
 }
 ```
 
-### Step 3: Configuration
+### Step 4: Configuration
 
 This bundle supports the following configuration (shown here with the defaults):
 
-```yml
+```yaml
 # Elixir Bundle Config
 gubler_elixir:
     web_directory: '%kernel.root_dir%/../web'
@@ -72,13 +95,13 @@ works if your app is multiple subdirectories deep (URL: `https://my-site.com/her
 
 If you use Elixir to version a file, instead of using `asset()` in your twig templates like this:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}" />
 ```
 
 you can use `elixir()` like this:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" />
 ```
 
