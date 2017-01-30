@@ -6,6 +6,7 @@
       <argument>%gubler_elixir.web_directory%</argument>
       <argument>%gubler_elixir.build_directory%</argument>
       <argument>%gubler_elixir.url_subdirectory%</argument>
+      <argument>%gubler_elixir.prefix_url%</argument>
     </service>
   </services>
 </container>
