@@ -27,7 +27,6 @@ class GublerElixirExtension extends Extension
         $container->setParameter('gubler_elixir.url_subdirectory', $config['url_subdirectory']);
         $container->setParameter('gubler_elixir.prefix_url', $config['prefix_url']);
 
-
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
